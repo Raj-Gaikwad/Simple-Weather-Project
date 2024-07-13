@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Weather App</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+
+<body>
+
+	<div class="weather-app">
+		
+		<form class="search-form" method="post">
+			<input type="text" class="city-input" placeholder="Enter City Name" name="location">
+			<input type="submit" value="Search" formaction="/search" id="search-btn">
+		</form>
+		 	<% if (locals.city || locals.date || locals.temp || locals.wind_speed || locals.humidity_per || locals.visibility_distance || locals.weather || locals.weather_des) { %>
+			 
+			<div class="city-date-section">
+					<h2 class="city"><%= city %></h2>
+					<p class="date"><%= date %></p>
+			</div>
+			
+			<div class="temperature-info">
+				<div class="description">
+					<i class="material-icons"><%= weather %></i>
+					<span class="description-text"><%= weather_des %></span>
+				</div>
+				<div class="temp"><%= temp %>°C</div>
+			</div>
+			
+			<div class="additional-info">
+
+			<div class="wind-info">
+				<i class="material-icons">air</i>
+				<div>
+					<h3 class="wind-speed"><%= wind_speed %>KM/H</h3>
+					<p class="wind-label">Wind</p>
+				</div>
+			</div>
+			
+			<div class="humidity-info">
+				<i class="material-icons">water_drop</i>
+				<div>
+					<h3 class="humidity"><%= humidity_per %>%</h3>
+					<p class="humidity-label">Humidity</p>
+				</div>
+			</div>
+			
+			<div class="visibility-info">
+				<i class="material-icons">visibility</i>
+				<div>
+					<h3 class="visibility-distance"><%= visibility_distance %>KM</h3>
+					<p class="visibility-label">Visibility</p>
+				</div>
+			</div>
+			
+		</div>
+		<% } %>
+
+		<% if (locals.error) { %>
+			<h3><%= error %></h3>
+		<% } %>
+	</div>
+</body>
+
+</html>
